@@ -43,6 +43,10 @@ public class PersoMouvement : MonoBehaviour
             deplacement();
         }
 
+    }
+
+    private void FixedUpdate()
+    {
         attack();
     }
 
