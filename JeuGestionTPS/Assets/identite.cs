@@ -50,7 +50,7 @@ public class identite : MonoBehaviour
         }
     }
 
-    protected void Destroy()
+    protected virtual void Destroy()
     {
         if(this.vie <= 0)
         {
