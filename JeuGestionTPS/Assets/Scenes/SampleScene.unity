@@ -1997,7 +1997,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674792820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: -0.043, z: 3.1}
+  m_LocalPosition: {x: -0.26, y: -0.03, z: 2.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1503239861}
@@ -2278,7 +2278,7 @@ Transform:
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -3799,7 +3799,7 @@ Transform:
   m_GameObject: {fileID: 1503239857}
   m_LocalRotation: {x: -0.041333117, y: 0.7509568, z: 0.0005422897, w: 0.65905637}
   m_LocalPosition: {x: 324, y: -3.8, z: 405.6}
-  m_LocalScale: {x: 1.4568, y: 4.180708, z: 1}
+  m_LocalScale: {x: 1.4568, y: 4.180708, z: 1.0000005}
   m_Children:
   - {fileID: 2002230207}
   - {fileID: 1668268117}
@@ -5569,7 +5569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldat: {fileID: 2098996540}
-  enemyContact: 1
 --- !u!4 &1999837125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 441240, guid: c544c58272b03294ebe7a1babe149792,

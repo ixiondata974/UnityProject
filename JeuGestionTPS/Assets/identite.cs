@@ -45,7 +45,6 @@ public class identite : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
         if (Physics.Raycast(transform.position, transform.forward * 10, out ray, 8) && canAttack)
         {
-            Debug.Log("Détécté");
             animAttack.Play("Bras(attack)");
         }
     }
