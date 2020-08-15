@@ -5,13 +5,11 @@ using UnityEngine;
 public class detectionPerso : MonoBehaviour
 {
     public GameObject soldat;
-    public bool enemyContact;
 
     // Start is called before the first frame update
     void Start()
     {
         gameObject.GetComponent<Renderer>().enabled = false;
-        enemyContact = false;
     }
 
     // Update is called once per fram

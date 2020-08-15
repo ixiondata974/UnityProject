@@ -17,7 +17,7 @@ public class flechProg : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.Rotate(0, joueur.rotation.y, 0);
+        
     }
 
     // Update is called once per frame

@@ -17,7 +17,7 @@ public class identite : MonoBehaviour
     [Range(0f,1f)]
     private float lerp = 0f;
 
-    public GameObject bras;
+    private GameObject bras;
 
     public float depart = 1.51f;
     public float fin = -1.77f;
@@ -28,6 +28,7 @@ public class identite : MonoBehaviour
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
+        bras = GameObject.Find("bras");
         animAttack = bras.GetComponent<Animator>();
     }
 
@@ -42,15 +43,18 @@ public class identite : MonoBehaviour
     private void attack()
     {
         RaycastHit ray;
-        Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
+        Debug.DrawRay(transform.position, transform.forward * 8, Color.green);
         if (Physics.Raycast(transform.position, transform.forward * 10, out ray, 8) && canAttack)
         {
-            Debug.Log("Détécté");
             animAttack.Play("Bras(attack)");
+        }
+        else
+        {
+            animAttack.Play("scrAttack");
         }
     }
 
-    protected void Destroy()
+    protected virtual void Destroy()
     {
         if(this.vie <= 0)
         {
