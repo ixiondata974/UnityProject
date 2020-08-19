@@ -17,9 +17,6 @@ public class PersoMouvement : MonoBehaviour
     private Camera laCamera;
 
     [SerializeField]
-    private Vector3 jumpSpeed;
-
-    [SerializeField]
     private GameObject cylindre, OuvertureEcranEnemie, flech;
 
     private CapsuleCollider playerCollider;
