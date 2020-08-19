@@ -10,11 +10,7 @@ public class OuvertureEcranArmée : MonoBehaviour
     [SerializeField]
     private GameObject écranArmé;
 
-    [SerializeField]
-    private PersoMouvement setactiveMouv;
-
-    [SerializeField]
-    private CameraControlle setCameraActive;
+    private bool pause = false;
 
     void Start()
     {
@@ -29,30 +25,24 @@ public class OuvertureEcranArmée : MonoBehaviour
 
     private void EcranArmeOpenClose()
     {
+        void fixedTimePause()
+        {
+            Time.fixedDeltaTime = Time.fixedDeltaTime * Time.timeScale;
+        }
         if (Input.GetKeyDown(Créer_Armée))
         {
-            if (écranArmé.active == true)
+            pause = !pause;
+            écranArmé.SetActive(pause);
+            if (écranArmé.active)
             {
-                écranArmé.SetActive(false);
-                active();
+                Time.timeScale = 0f;
+                //fixedTimePause();
             }
             else
             {
-                écranArmé.SetActive(true);
-                active();
+                Time.timeScale = 1f;
+                //fixedTimePause();
             }
         }
-
-        if(écranArmé.active == true && Input.GetKeyDown(KeyCode.Escape))
-        {
-            écranArmé.SetActive(false);
-            active();
-        }
-    }
-
-    private void active()
-    {
-        setactiveMouv.setActive();
-        setCameraActive.setActivate();
     }
 }

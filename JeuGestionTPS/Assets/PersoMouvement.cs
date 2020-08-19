@@ -20,13 +20,12 @@ public class PersoMouvement : MonoBehaviour
     private Vector3 jumpSpeed;
 
     [SerializeField]
-    private GameObject cube, cylindre, OuvertureEcranEnemie, flech;
+    private GameObject cylindre, OuvertureEcranEnemie, flech;
 
     private CapsuleCollider playerCollider;
     private Rigidbody rb;
     private float speed = 10.0f;
     private GameObject rayHit;
-    private bool active = true;
 
     void Start()
     {
@@ -38,10 +37,7 @@ public class PersoMouvement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (active == true)
-        {
-            deplacement();
-        }
+        deplacement();
 
     }
 
@@ -59,9 +55,9 @@ public class PersoMouvement : MonoBehaviour
         {
             if(hit.collider.tag == "Enemi")
             {
+                OuvertureEcranEnemie.gameObject.SetActive(true);
                 OuvertureEcranEnemie.transform.GetChild(0).GetComponent<Text>().text = hit.collider.transform.name;
                 OuvertureEcranEnemie.transform.GetChild(1).GetComponent<Text>().text = "Point de vie : "+hit.collider.gameObject.GetComponent<identite>().getVie().ToString();
-                OuvertureEcranEnemie.gameObject.SetActive(true);
                 attackFlech();
             }
         }
@@ -76,7 +72,6 @@ public class PersoMouvement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObject arrow = Instantiate(flech, rayHit.transform.position, transform.rotation);
-            arrow.transform.rotation = Quaternion.Euler(0, transform.rotation.y, 0);
             arrow.SetActive(true);
             arrow.GetComponent<Rigidbody>().AddForce(transform.forward * 2000f);
         }
@@ -112,10 +107,5 @@ public class PersoMouvement : MonoBehaviour
             vitesseMarche -= acceleration;
         }
 
-    }
-
-    public void setActive()
-    {
-        active = !active;
     }
 }

@@ -10,7 +10,7 @@ public class ApparaitionEnemie : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 6; i++)
         {
             float X = Random.Range(116f, 330f);
             float Z = Random.Range(162.4f, 362.9f);
