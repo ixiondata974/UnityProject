@@ -27,6 +27,7 @@ public class PersoMouvement : MonoBehaviour
     void Start()
     {
         playerCollider = gameObject.GetComponent<CapsuleCollider>();
+        OuvertureEcranEnemie.SetActive(false);
         rb = GetComponent<Rigidbody>();
         rayHit = GameObject.Find("RayHit");
     }
@@ -52,7 +53,7 @@ public class PersoMouvement : MonoBehaviour
         {
             if(hit.collider.tag == "Enemi")
             {
-                OuvertureEcranEnemie.gameObject.SetActive(true);
+                OuvertureEcranEnemie.SetActive(true);
                 OuvertureEcranEnemie.transform.GetChild(0).GetComponent<Text>().text = hit.collider.transform.name;
                 OuvertureEcranEnemie.transform.GetChild(1).GetComponent<Text>().text = "Point de vie : "+hit.collider.gameObject.GetComponent<identite>().getVie().ToString();
                 attackFlech();
