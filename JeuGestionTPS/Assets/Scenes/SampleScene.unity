@@ -4313,11 +4313,10 @@ MonoBehaviour:
   derrier: s
   gauche: q
   droite: d
-  NomDeEnemie: Cylinder
   laCamera: {fileID: 963194227}
-  cylindre: {fileID: 2098996540}
   OuvertureEcranEnemie: {fileID: 2122414280}
   flech: {fileID: 1527934128}
+  LoadScene2: t
 --- !u!136 &1503239864
 CapsuleCollider:
   m_ObjectHideFlags: 0
