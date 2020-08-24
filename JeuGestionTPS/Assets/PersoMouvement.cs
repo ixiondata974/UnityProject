@@ -2,31 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = System.Random;
 
-public class PersoMouvement : MonoBehaviour
+public class PersoMouvement : BaseMouvement
 {
     [SerializeField]
-    private float vitesseMarche, acceleration;
+    private GameObject OuvertureEcranEnemie, flech;
 
-    [SerializeField]
-    private string devant, derrier, gauche, droite, NomDeEnemie;
-
-    [SerializeField]
-    private Camera laCamera;
-
-    [SerializeField]
-    private GameObject cylindre, OuvertureEcranEnemie, flech;
+    public string LoadScene2;
 
     private CapsuleCollider playerCollider;
-    private Rigidbody rb;
     private float speed = 10.0f;
     private GameObject rayHit;
 
     void Start()
     {
         playerCollider = gameObject.GetComponent<CapsuleCollider>();
+        OuvertureEcranEnemie.SetActive(false);
         rb = GetComponent<Rigidbody>();
         rayHit = GameObject.Find("RayHit");
     }
@@ -35,7 +29,15 @@ public class PersoMouvement : MonoBehaviour
     void Update()
     {
         deplacement();
+        LoadScene();
+    }
 
+    private void LoadScene()
+    {
+        if (Input.GetKey(LoadScene2))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private void FixedUpdate()
@@ -52,7 +54,7 @@ public class PersoMouvement : MonoBehaviour
         {
             if(hit.collider.tag == "Enemi")
             {
-                OuvertureEcranEnemie.gameObject.SetActive(true);
+                OuvertureEcranEnemie.SetActive(true);
                 OuvertureEcranEnemie.transform.GetChild(0).GetComponent<Text>().text = hit.collider.transform.name;
                 OuvertureEcranEnemie.transform.GetChild(1).GetComponent<Text>().text = "Point de vie : "+hit.collider.gameObject.GetComponent<identite>().getVie().ToString();
                 attackFlech();
@@ -72,37 +74,5 @@ public class PersoMouvement : MonoBehaviour
             arrow.SetActive(true);
             arrow.GetComponent<Rigidbody>().AddForce(transform.forward * 2000f);
         }
-    }
-
-    private void deplacement()
-    {
-        if (Input.GetKey(devant))
-        {
-            transform.Translate(0, 0, vitesseMarche * Time.deltaTime);
-        }
-        if (Input.GetKey(derrier))
-        {
-            transform.Translate(0, 0, -vitesseMarche * Time.deltaTime);
-        }
-        if (Input.GetKey(gauche))
-        {
-            transform.Translate(-vitesseMarche * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetKey(droite))
-        {
-            transform.Translate(vitesseMarche * Time.deltaTime, 0, 0);
-        }
-        if (Input.GetButtonDown("Jump"))
-        {
-            rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            vitesseMarche += acceleration;
-        }else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            vitesseMarche -= acceleration;
-        }
-
     }
 }

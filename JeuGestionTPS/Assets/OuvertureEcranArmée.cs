@@ -25,10 +25,6 @@ public class OuvertureEcranArmée : MonoBehaviour
 
     private void EcranArmeOpenClose()
     {
-        void fixedTimePause()
-        {
-            Time.fixedDeltaTime = Time.fixedDeltaTime * Time.timeScale;
-        }
         if (Input.GetKeyDown(Créer_Armée))
         {
             pause = !pause;
@@ -36,12 +32,10 @@ public class OuvertureEcranArmée : MonoBehaviour
             if (écranArmé.active)
             {
                 Time.timeScale = 0f;
-                //fixedTimePause();
             }
             else
             {
                 Time.timeScale = 1f;
-                //fixedTimePause();
             }
         }
     }
