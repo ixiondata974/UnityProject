@@ -36,7 +36,7 @@ public class PersoMouvement : BaseMouvement
     {
         if (Input.GetKey(LoadScene2))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
