@@ -13,10 +13,6 @@ public class identite : MonoBehaviour
     private bool canAttack = true;
     private Animator animAttack;
 
-    [SerializeField]
-    [Range(0f,1f)]
-    private float lerp = 0f;
-
     private GameObject bras;
 
     public float depart = 1.51f;

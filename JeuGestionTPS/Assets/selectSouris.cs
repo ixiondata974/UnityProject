@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class selectSouris : MonoBehaviour
 {
-    public GameObject PointeurSouris;
-    bool barriere;
+    public GameObject PointeurSouris, pillier;
+    public choixBatiment selectBatiment;
+
+    GameObject lastPillar;
+    bool create;
 
     // Start is called before the first frame update
     void Start()
@@ -24,34 +27,30 @@ public class selectSouris : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            create = true;
             startFence();
         }
-        else if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
-            setFence();
-        }
-        else
-        {
-            if (barriere)
-            {
-                updateFence();
-            }
+            create = false;
         }
     }
-
-    private void updateFence()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void setFence()
-    {
-        barriere = false;
-    }
-
+    
     private void startFence()
     {
-        barriere = false;
+        if (create)
+        {
+            Vector3 startPillier = pointeur();
+            startPillier = snapPosition(startPillier);
+            try
+            {
+                GameObject zone = Instantiate(GameObject.Find(selectBatiment.objSelect.name), startPillier, Quaternion.identity);
+            }
+            catch
+            {
+                Debug.Log("Aucun objet sélectionné");
+            }
+        }
     }
 
     public Vector3 pointeur()
